@@ -11,3 +11,14 @@ def calculate_grade(marks):
         grade = "F"
 
     return grade
+
+def get_grade_description(grade):
+    descriptions = {
+        "A": "Excellent",
+        "B": "Good",
+        "C": "Average",
+        "D": "Pass",
+        "F": "Fail"
+    }
+
+    return descriptions.get(grade, "Unknown")

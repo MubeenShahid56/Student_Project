@@ -5,7 +5,7 @@ from pathlib import Path
 try:
     from utils.validate_name import validate_name
     from utils.validate_marks import validate_marks
-    from Services.Calculator import calculate_grade
+    from Services.Calculator import calculate_grade, get_grade_description
     from Report.student_report import display_report
     from config import APP_NAME, DEBUG, MAX_STUDENTS
     from logger import logger
@@ -20,7 +20,7 @@ except ImportError:
 
     from src.student_app.utils.validate_name import validate_name
     from src.student_app.utils.validate_marks import validate_marks
-    from src.student_app.Services.Calculator import calculate_grade
+    from Services.Calculator import calculate_grade, get_grade_description
     from src.student_app.Report.student_report import display_report
     from src.student_app.config import APP_NAME, DEBUG, MAX_STUDENTS
     from src.student_app.logger import logger
@@ -50,7 +50,11 @@ def main():
         return
 
     grade = calculate_grade(marks)
+    status = get_grade_description(grade)
+
     display_report(name, marks, grade)
+
+    print(f"Student Status: {status}")
 
     print(f"Application: {APP_NAME}")
     print(f"Debug mode: {DEBUG}")
